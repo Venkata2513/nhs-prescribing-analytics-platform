@@ -1,0 +1,8 @@
+# dbt artifacts
+dbt/**/target/
+dbt/**/logs/
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
