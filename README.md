@@ -1,260 +1,314 @@
-#### **NHS Prescribing Data Platform**
+#### **# NHS Prescribing Cost \& Efficiency Platform**  
 
+#### **\*\*(AWS Redshift · dbt · PowerBI )\*\***
 
+#### 
 
-AWS • Redshift Serverless • dbt • SNOMED
+#### **A cloud-based analytical platform identifying \*\*£252.5M in annual prescribing efficiency opportunities\*\*, while providing deep insights into prescribing patterns and cost drivers across England’s \*\*42 Integrated Care Boards (ICBs)\*\*.**
 
+#### 
 
+#### **---**
 
-**Overview**
+#### 
 
+#### **##  Overview**
 
+#### 
 
-End-to-end cloud data engineering pipeline built by a Pharmacist on real NHS prescribing data to analyse prescribing behaviour, costs, and efficiency opportunities across England at Integrated Care Board (ICB) level.
+#### **NHS prescribing expenditure exceeds \*\*£11B annually\*\*, yet clinically equivalent and lower-cost generic alternatives are not consistently prescribed.**
 
+#### 
 
+#### **This project transforms large, fragmented NHS prescribing datasets into a \*\*governed analytical warehouse\*\* to:**
 
-**Architecture**
+#### 
 
+#### **- quantify prescribing costs,**
 
+#### **- identify unwarranted variation, and**
 
-Excel → Python → Amazon S3 → Redshift Serverless → dbt → Analytics
+#### **- estimate evidence-based generic switching opportunities.**
 
+#### 
 
+#### **Built by a \*\*GPhC-registered Pharmacist\*\*, the platform combines clinical domain expertise with modern analytics engineering to ensure insights are \*\*clinically valid, reproducible, and policy-relevant\*\*.**
 
-Source data converted from Excel to CSV using Python (pandas +openpyxl)
+#### 
 
+#### **---**
 
+#### 
 
-Raw data ingested into Amazon S3
+#### **##  Key Findings (FY 2024/25)**
 
+#### 
 
+#### **- \*\*Total Prescribing Cost:\*\* £11.15B**  
 
-Amazon Redshift Serverless used as the analytical warehouse
+#### **- \*\*Total Items Dispensed:\*\* 1.26B**  
 
+#### **- \*\*Average Cost per Item:\*\* £8.84**  
 
+#### **- \*\*Estimated Annual Efficiency Opportunity:\*\* \*\*£252.5M\*\***
 
-dbt used for transformation and analytics-layer modelling
+#### 
 
+#### **Savings are concentrated primarily within:**
 
+#### 
 
-**Data Sources**
+#### **- \*\*BNF Central Nervous System (CNS)\*\* chapter**
 
+#### **- A small number of high-impact branded products**
 
+#### 
 
-NHS Business Services Authority (NHSBSA)
+#### **---**
 
-Prescribing Cost Analysis (PCA) Summary Tables ICB Level  — FY 2024/25
+#### 
 
+#### **##  Validation**
 
+#### 
 
-Datasets used:
+#### **Aggregated outputs reconcile with \*\*published NHSBSA Prescribing Cost Analysis (PCA)\*\* national summaries, providing external validation of:**
 
+#### 
 
+#### **- data ingestion,**
 
-Chemical-level prescribing
+#### **- transformation logic, and**
 
+#### **- analytical modelling.**
 
+#### 
 
-Presentation-level prescribing
+#### **---**
 
+#### 
 
+#### **##  Architecture \& Tech Stack**
 
-SNOMED-enhanced prescribing data
+#### 
 
+#### **### Pipeline** 
 
 
-**Technology Stack**
 
+#### **Excel → Python → Amazon S3 → Redshift Serverless → dbt → Power BI**
 
 
-AWS: S3, Redshift Serverless, IAM
 
 
 
-dbt Core
+**### Cloud \& Data**
 
 
 
-SQL (Redshift)
+**- \*\*AWS\*\***
 
+  **- Amazon S3 (raw data lake)**
 
+  **- Amazon Redshift Serverless (analytical warehouse)**
 
-Python (pandas) for data preparation
+  **- IAM (secure, role-based access)**
 
 
 
-**Data Modelling Approach (Summary)**
+**### Transformation**
 
 
 
-A galaxy (constellation) schema is used to support multiple analytical grains without conflating measures.
+**- \*\*dbt Core\*\***
 
+  **- Staging, intermediate, and marts layers**
 
+  **- Schema and relationship testing for referential integrity**
 
-Chemical-level fact for high-level cost and volume analysis
 
 
+**### Modelling**
 
-Presentation / SNOMED-level fact for detailed product and prescribing-context analysis
 
 
+**- \*\*Galaxy (Constellation) Schema\*\***
 
-Shared dimensions for time, geography, BNF hierarchy, supplier, and prescribing context
+  **- Supports multiple analytical grains**
 
+  **- Prevents double-counting of spend**
 
 
-This design avoids deriving metrics across incompatible grains and preserves clinical and operational meaning.
 
+**### Visualisation**
 
 
-**Canonical Fact Design (Current)**
 
+**- \*\*Power BI\*\***
 
+  **- KPI dashboards**
 
-Fact table: fct\_prescribing\_snomed\_icb
+  **- Savings treemaps**
 
-Source: raw.snomed\_presentations
+  **- Brand-level variance analysis**
 
 
 
-Grain :
+**---**
 
-financial\_year
 
-× icb\_code
 
-× bnf\_presentation\_code
+**## 🧬 Data Modelling: A Pharmacist–Engineer Perspective**
 
-× prescribing\_context
 
-× supplier\_name
 
-× snomed\_code
+**The central challenge of NHS prescribing data is \*\*grain alignment\*\*.**
 
 
 
-Exact duplicates are removed at this grain during staging.
+**This platform reconciles three clinically distinct grains:**
 
 
 
-**Why SNOMED is Modelled in the Fact**
+**| Grain        | Purpose                                      |**
 
+**|-------------|----------------------------------------------|**
 
+**| Chemical     | Macro-level spend and volume trends           |**
 
-SNOMED codes vary by presentation and prescribing context, and multiple SNOMED codes may exist for the same BNF presentation.
+**| Presentation | Operational and supply-chain analysis         |**
 
+**| SNOMED       | Clinical concept, specificity, formulation   |**
 
 
-Placing SNOMED in a dimension would:
 
+**SNOMED is retained as a \*\*degenerate attribute\*\* within the fact table (Phase 1) to preserve clinical accuracy without unnecessary dimensional explosion.**
 
 
-* lose valid clinical distinctions, or
 
+**A \*\*Galaxy schema\*\* enables concurrent analysis across these grains while maintaining referential integrity and preventing double counting.**
 
 
-* introduce duplicated dimension rows.
 
+**---**
 
 
-Decision:
 
-Model snomed\_code as a degenerate attribute in the fact table for Phase 1.
+**## Savings Methodology (£252.5M)**
 
 
 
-Future phase:
+**Savings are estimated using a \*\*Price-Per-Unit (PPU) variance model\*\*:**
 
-Introduce a dedicated dim\_snomed with dm+d (VMP / AMP) mappings for longitudinal or clinical hierarchy analysis.
 
 
+**Savings = (Brand Cost per Item − Generic Benchmark Cost per Item) × Brand Items**
 
-**Key Engineering Challenges Solved**
 
 
 
-Migrating large NHS datasets into Redshift Serverless
 
+**### Generic Benchmarks**
 
 
-Handling verbose free-text fields causing COPY failures
 
+**Benchmarks are calculated \*\*like-for-like\*\* across:**
 
 
-Debugging IAM + S3 and Securitygroup permissions for serverless COPY operations
 
+**- the same \*\*chemical substance\*\*,**
 
+**- the same \*\*unit of measure\*\*, and**
 
-Using Redshift system views (sys\_load\_error\_detail) for ingestion diagnostics
+**- the same \*\*time period\*\*.**
 
 
 
-Designing fact grain based on clinical reality, not convenience
+**This ensures clinically appropriate comparisons and avoids overstating savings where substitution may not be feasible.**
 
 
 
-**Current Status**
+**---**
 
 
 
-AWS infrastructure provisioned
+**## 🛠 Engineering Challenges Addressed**
 
 
 
-Raw data successfully loaded:
+**### Ingestion Diagnostics**
 
+**Used `sys\_load\_error\_detail` in Redshift Serverless to resolve COPY failures caused by verbose free-text NHS fields exceeding standard DDL limits.**
 
 
-~63k chemical substance rows
 
+**### Surrogate Key Generation**
 
+**Implemented \*\*MD5-based surrogate keys\*\* in dbt to guarantee stable joins across:**
 
-~600k presentation rows
 
 
+**- ~770k SNOMED-level rows**  
 
-~770k SNOMED-level rows
+**- 42 ICBs**  
 
+**- multi-grain fact tables**  
 
 
-Staging and analytics-layer models in progress
 
+**### Identity \& Access Management**
 
+**Configured IAM roles for secure, credential-free S3 ingestion into Redshift Serverless.**
 
-**Future Enhancements**
 
 
+**---**
 
-dm+d (VMP / AMP) enrichment
 
 
+**##  Visual Outputs (Power BI)**
 
-Multi-year longitudinal analysis
 
 
+**- \*\*National KPI Dashboard\*\* – spend, volume, and cost drivers**  
 
-Supplier volatility and cost-variance metrics
+**- \*\*Savings Treemap\*\* – £252.5M opportunity by BNF chapter and section**  
 
+**- \*\*Branded Leaderboard\*\* – products contributing most to prescribing variance**  
 
 
-Curated datasets exposed for downstream analytics or SaaS use cases
 
+**\*(Screenshots available in `/docs/screenshots`)\***
 
 
-Additional Documentation
 
+**---**
 
 
-Detailed grain analysis: /docs/grain-discovery.md
 
+**##  Future Enhancements (Phase 2)**
 
 
-Data model notes: /docs/data\_model.md
 
+**- \*\*dm+d enrichment:\*\* Explicit SNOMED → VMP / AMP mapping for actionable switching lists**  
 
+**- \*\*Multi-year longitudinal analysis\*\***  
 
-Architecture notes: /docs/architecture.md
+**- \*\*CI/CD:\*\* Automated dbt testing via GitHub Actions**  
+
+**- \*\*Orchestration:\*\* Migration of Python ingestion to AWS Lambda or Airflow**  
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
