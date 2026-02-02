@@ -73,7 +73,11 @@ Benchmarks are calculated **like-for-like** across the same chemical substance, 
 
 ## Engineering Challenges Addressed
 *   **Ingestion Diagnostics:** Used `sys_load_error_detail` in Redshift to resolve COPY failures caused by verbose free-text NHS fields.
-*   **Surrogate Key Generation:** Implemented **MD5-based surrogate keys** in dbt to guarantee stable joins across ~770k SNOMED-level rows and 42 ICBs.
+*   **Surrogate Key Generation:** Implemented **MD5-based surrogate keys** in dbt to guarantee stable joins across:
+   *   ~63k chemical substance rows
+    *   ~600k presentation rows
+    *   ~770k SNOMED-level rows
+    *    42 ICBs
 *   **Identity & Access Management:** Configured IAM roles for secure, credential-free S3 ingestion into Redshift.
 
 ---
