@@ -84,5 +84,6 @@ Benchmarks are calculated **like-for-like** across the same chemical substance, 
 
 ## Future Enhancements (Phase 2)
 *   **dm+d enrichment:** Explicit SNOMED → VMP / AMP mapping for actionable switching lists.
+*   **Multi-year longitudinal analysis**
 *   **CI/CD:** Automated dbt testing via [GitHub Actions](https://github.com).
 *   **Orchestration:** Migration of Python ingestion to [AWS Lambda](https://aws.amazon.com).
