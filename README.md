@@ -1,6 +1,6 @@
 #### **# NHS Prescribing Cost \& Efficiency Platform**  
 
-#### **\*\*(AWS Redshift · dbt · PowerBI )\*\***
+#### **\*\*AWS Redshift · dbt · PowerBI \*\***
 
 #### 
 
@@ -158,7 +158,7 @@
 
 
 
-**## 🧬 Data Modelling: A Pharmacist–Engineer Perspective**
+**##  Data Modelling: A Pharmacist–Engineer Perspective**
 
 
 
@@ -171,13 +171,9 @@
 
 
 **| Grain        | Purpose                                      |**
-
 **|-------------|----------------------------------------------|**
-
 **| Chemical     | Macro-level spend and volume trends           |**
-
 **| Presentation | Operational and supply-chain analysis         |**
-
 **| SNOMED       | Clinical concept, specificity, formulation   |**
 
 
@@ -232,7 +228,7 @@
 
 
 
-**## 🛠 Engineering Challenges Addressed**
+**## Engineering Challenges Addressed**
 
 
 
@@ -246,7 +242,9 @@
 
 **Implemented \*\*MD5-based surrogate keys\*\* in dbt to guarantee stable joins across:**
 
+**- ~63k chemical substance rows**
 
+**- ~600k presentation rows**
 
 **- ~770k SNOMED-level rows**  
 
