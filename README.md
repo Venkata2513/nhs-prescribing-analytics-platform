@@ -172,6 +172,7 @@
 
 **| Grain        | Purpose                                      |**
 **|-------------|----------------------------------------------|**
+
 **| Chemical     | Macro-level spend and volume trends           |**
 **| Presentation | Operational and supply-chain analysis         |**
 **| SNOMED       | Clinical concept, specificity, formulation   |**
