@@ -29,7 +29,7 @@ Savings are concentrated primarily within the **BNF Central Nervous System (CNS)
 ---
 
 ## Validation
-Aggregated outputs reconcile with [NHSBSA Prescribing Cost Analysis (PCA)](https://www.nhsbsa.nhs.uk) national summaries, providing external validation of data ingestion, transformation logic, and analytical modelling.
+Aggregated outputs reconcile with [NHSBSA Prescribing Cost Analysis (PCA)](https://www.nhsbsa.nhs.uk/statistical-collections/prescription-cost-analysis-england/prescription-cost-analysis-england-202425) national summaries, providing external validation of data ingestion, transformation logic, and analytical modelling.
 
 ---
 
