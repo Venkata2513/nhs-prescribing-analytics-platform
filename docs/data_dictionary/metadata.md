@@ -1,4 +1,4 @@
-\# Data Dictionary \& Metadata
+# Data Dictionary \& Metadata
 
 
 
@@ -6,7 +6,7 @@ This project utilizes publicly available NHSBSA prescribing datasets. The follow
 
 
 
-\## 1. Clinical \& BNF Hierarchy
+## 1. Clinical \& BNF Hierarchy
 
 These fields define the "Grain" of the medicinal products being analyzed.
 
@@ -36,7 +36,7 @@ These fields define the "Grain" of the medicinal products being analyzed.
 
 
 
-\## 2. Financial \& Quantitative Measures
+## 2. Financial \& Quantitative Measures
 
 The core metrics used to calculate the £252.5M savings opportunity.
 
@@ -60,7 +60,7 @@ The core metrics used to calculate the £252.5M savings opportunity.
 
 
 
-\## 3. Geography \& Population
+## 3. Geography \& Population
 
 The dimensions used to aggregate data at the Integrated Care Board (ICB) level.
 
@@ -82,7 +82,7 @@ The dimensions used to aggregate data at the Integrated Care Board (ICB) level.
 
 
 
-\## 4. Preparation Class Reference
+## 4. Preparation Class Reference
 
 This is the logic used to identify \*\*Class 3 (Branded)\*\* vs \*\*Class 1 (Generic)\*\* for savings benchmarks:
 
