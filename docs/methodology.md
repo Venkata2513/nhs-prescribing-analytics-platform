@@ -1,8 +1,7 @@
-\# Methodology
+# Methodology
 
 
-
-\## Problem Statement
+## Problem Statement
 
 
 
@@ -17,8 +16,7 @@ This project aims to quantify \*\*evidence-based prescribing efficiency opportun
 ---
 
 
-
-\## Grain Discovery
+## Grain Discovery
 
 
 
@@ -26,37 +24,37 @@ A core design step was identifying and respecting the true analytical grains pre
 
 
 
-\### 1. Chemical-level grain
+### 1. Chemical-level grain
 
-\- Financial Year × ICB × Chemical Substance
+- Financial Year × ICB × Chemical Substance
 
-\- Suitable for macro cost and volume trends
-
-
-
-\### 2. Presentation-level grain
-
-\- Financial Year × ICB × BNF Presentation
-
-\- Required for supplier and formulation analysis
+- Suitable for macro cost and volume trends
 
 
 
-\### 3. SNOMED-level grain
+### 2. Presentation-level grain
 
-\- Financial Year × ICB × Presentation × Supplier × SNOMED × Prescribing Context
+- Financial Year × ICB × BNF Presentation
 
-\- Required to preserve clinical specificity and prescribing behaviour
+- Required for supplier and formulation analysis
+
+
+
+### 3. SNOMED-level grain
+
+- Financial Year × ICB × Presentation × Supplier × SNOMED × Prescribing Context
+
+- Required to preserve clinical specificity and prescribing behaviour
 
 
 
 Early exploratory profiling confirmed that collapsing these grains into a single table would cause:
 
-\- spend duplication
+- spend duplication
 
-\- incorrect aggregations
+- incorrect aggregations
 
-\- invalid savings estimates
+- invalid savings estimates
 
 
 
@@ -68,7 +66,7 @@ This directly informed the multi-fact Galaxy schema used in the warehouse.
 
 
 
-\## Savings Logic (£252.5M)
+## Savings Logic (£252.5M)
 
 
 
@@ -82,25 +80,25 @@ Savings = (Brand Cost per Item − Generic Benchmark Cost per Item) × Brand Ite
 
 
 
-\### Benchmark Construction
+### Benchmark Construction
 
 Generic benchmarks are computed:
 
-\- at the same financial year
+- at the same financial year
 
-\- for the same chemical substance
+- for the same chemical substance
 
-\- using the same unit of measure
+- using the same unit of measure
 
 
 
 This ensures comparisons are:
 
-\- clinically valid
+- clinically valid
 
-\- operationally realistic
+- operationally realistic
 
-\- free from formulation mismatches
+- free from formulation mismatches
 
 
 
@@ -108,15 +106,15 @@ This ensures comparisons are:
 
 
 
-\## Important Caveats
+## Important Caveats
 
 
 
-\- Savings represent \*\*opportunity\*\*, not guaranteed cash release
+- Savings represent \*\*opportunity\*\*, not guaranteed cash release
 
-\- Some branded products do not have directly substitutable generic AMPs
+- Some branded products do not have directly substitutable generic AMPs
 
-\- SNOMED → dm+d (VMP/AMP) mapping is required for prescriber-level switch lists
+- SNOMED → dm+d (VMP/AMP) mapping is required for prescriber-level switch lists
 
 
 
@@ -128,23 +126,23 @@ These limitations are explicitly acknowledged and addressed in the Phase 2 roadm
 
 
 
-\## Validation
+## Validation
 
 
 
 Aggregated outputs reconcile with:
 
-\- NHSBSA Prescribing Cost Analysis (PCA) national summaries
+- NHSBSA Prescribing Cost Analysis (PCA) national summaries
 
 
 
 This provides external validation of:
 
-\- ingestion accuracy
+- ingestion accuracy
 
-\- transformation logic
+- transformation logic
 
-\- grain integrity
+- grain integrity
 
 
 
