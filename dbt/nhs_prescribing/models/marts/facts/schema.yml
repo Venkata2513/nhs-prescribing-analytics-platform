@@ -1,0 +1,64 @@
+version: 2
+
+models:
+  - name: fct_prescribing_chemical_icb
+    description: "Chemical substance prescribing fact at FY × ICB × BNF chemical substance grain."
+    columns:
+      - name: time_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_time')
+              field: time_id
+
+      - name: geography_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_geography')
+              field: geography_id
+
+      - name: bnf_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_bnf')
+              field: bnf_id
+
+  - name: fct_prescribing_snomed_icb
+    description: "Canonical prescribing fact at FY × ICB × Presentation × SNOMED × Prescribing Context × Supplier grain."
+    columns:
+      - name: time_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_time')
+              field: time_id
+
+      - name: geography_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_geography')
+              field: geography_id
+
+      - name: bnf_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_bnf')
+              field: bnf_id
+
+      - name: prescribing_context_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_prescribing_context')
+              field: prescribing_context_id
+
+      - name: supplier_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_supplier')
+              field: supplier_id

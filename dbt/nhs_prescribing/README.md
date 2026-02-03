@@ -1,15 +1,30 @@
-Welcome to your new dbt project!
-
-### Using the starter project
-
-Try running the following commands:
-- dbt run
-- dbt test
+\# dbt Models – NHS Prescribing Analytics
 
 
-### Resources:
-- Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [chat](https://community.getdbt.com/) on Slack for live discussions and support
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+
+This directory contains the dbt transformation layer for the \*\*NHS Prescribing Cost \& Efficiency Platform\*\*.
+
+
+
+It is responsible for:
+
+\- cleaning and standardising raw NHS prescribing datasets,
+
+\- modelling multi-grain fact and dimension tables (chemical, presentation, SNOMED),
+
+\- enforcing referential integrity via schema and relationship tests, and
+
+\- producing analytics-ready tables for downstream reporting in Power BI.
+
+
+
+The project follows a layered dbt structure:
+
+\- \*\*staging\*\* – type casting, normalization, de-duplication  
+
+\- \*\*intermediate\*\* – grain alignment and reusable logic  
+
+\- \*\*marts\*\* – star/galaxy schema with validated facts and dimensions
+
+
+

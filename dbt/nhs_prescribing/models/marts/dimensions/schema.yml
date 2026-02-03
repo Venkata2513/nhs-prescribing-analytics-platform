@@ -1,0 +1,110 @@
+version: 2
+
+models:
+  - name: dim_time
+    description: "Time dimension at financial-year grain (FY runs 1 April to 31 March)."
+    columns:
+      - name: time_id
+        description: "Deterministic hash key of financial_year."
+        tests:
+          - not_null
+          - unique
+
+      - name: financial_year
+        description: "Financial year label (e.g. 2024/25)."
+        tests:
+          - not_null
+          - unique
+
+      - name: fy_start_year
+        description: "Calendar year in which the financial year starts."
+        tests:
+          - not_null
+
+      - name: fy_end_year
+        description: "Calendar year in which the financial year ends."
+        tests:
+          - not_null
+
+  - name: dim_bnf
+    description: "BNF hierarchy dimension at chemical substance level."
+    columns:
+      - name: bnf_id
+        description: "Deterministic hash key of BNF chemical substance code."
+        tests:
+          - not_null
+          - unique
+
+      - name: bnf_chemical_substance_code
+        description: "BNF chemical substance code."
+        tests:
+          - not_null
+          - unique
+
+      - name: bnf_chemical_substance_name
+        description: "BNF chemical substance name."
+
+      - name: bnf_paragraph_code
+        description: "BNF paragraph code."
+
+      - name: bnf_section_code
+        description: "BNF section code."
+
+      - name: bnf_chapter_code
+        description: "BNF chapter code."
+
+  - name: dim_geography
+    description: "Geography dimension at ICB level with associated NHS region attributes."
+    columns:
+      - name: geography_id
+        description: "Deterministic hash key of icb_code."
+        tests:
+          - not_null
+          - unique
+
+      - name: icb_code
+        description: "Integrated Care Board (ICB) code."
+        tests:
+          - not_null
+          - unique
+
+      - name: icb_name
+        description: "Integrated Care Board (ICB) name."
+
+      - name: region_code
+        description: "NHS region code."
+
+      - name: region_name
+        description: "NHS region name."
+
+  - name: dim_supplier
+    description: "Supplier (manufacturer/wholesaler) dimension derived from SNOMED-level dataset."
+    columns:
+      - name: supplier_id
+        description: "Deterministic hash key of supplier_name (with NULL mapped to 'UNKNOWN')."
+        tests:
+          - not_null
+          - unique
+
+      - name: supplier_name
+        description: "Supplier name as provided in source; NULLs mapped to 'UNKNOWN'."
+        tests:
+          - not_null
+
+  - name: dim_prescribing_context
+    description: "Dimension representing prescribing context (how an item was prescribed), derived from preparation class, prescribed preparation class, and advanced service type."
+    columns:
+      - name: prescribing_context_id
+        description: "Deterministic hash key of preparation_class, prescribed_preparation_class, and advanced_service_type."
+        tests:
+          - not_null
+          - unique
+
+      - name: preparation_class
+        description: "NHSBSA preparation class (1–5) describing product classification."
+
+      - name: prescribed_preparation_class
+        description: "Preparation class as written on the prescription (used to infer generic prescribing)."
+        
+      - name: advanced_service_type
+        description: "Advanced service type through which an item was issued (if applicable)."
