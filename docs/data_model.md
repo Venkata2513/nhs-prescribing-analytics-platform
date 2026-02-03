@@ -24,7 +24,7 @@ Two fact tables are used, sharing conformed dimensions.
 
 ### 1. `fct\_prescribing\_chemical\_icb`
 
-*\*Grain\*\*
+\*\*Grain\*\*
 
 - Financial Year
 
@@ -34,7 +34,7 @@ Two fact tables are used, sharing conformed dimensions.
 
 
 
-*\*Purpose\*\*
+\*\*Purpose\*\*
 
 - National and regional cost trends
 
@@ -50,7 +50,7 @@ Two fact tables are used, sharing conformed dimensions.
 
 ### 2. `fct\_prescribing\_snomed\_icb`
 
-*\*Grain\*\*
+\*\*Grain\*\*
 
 - Financial Year
 
@@ -66,7 +66,7 @@ Two fact tables are used, sharing conformed dimensions.
 
 
 
-*\*Purpose\*\*
+\*\*Purpose\*\*
 
 - Prescribing behaviour analysis
 
