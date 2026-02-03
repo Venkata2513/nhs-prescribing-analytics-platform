@@ -1,8 +1,8 @@
-\# Data Model
+# Data Model
 
 
 
-\## Overview
+## Overview
 
 
 
@@ -18,29 +18,29 @@ Two fact tables are used, sharing conformed dimensions.
 
 
 
-\## Fact Tables
+## Fact Tables
 
 
 
-\### 1. `fct\_prescribing\_chemical\_icb`
+### 1. `fct\_prescribing\_chemical\_icb`
 
-\*\*Grain\*\*
+*\*Grain\*\*
 
-\- Financial Year
+- Financial Year
 
-\- ICB
+- ICB
 
-\- Chemical Substance
+- Chemical Substance
 
 
 
-\*\*Purpose\*\*
+*\*Purpose\*\*
 
-\- National and regional cost trends
+- National and regional cost trends
 
-\- High-level benchmarking
+- High-level benchmarking
 
-\- Population-adjusted metrics
+- Population-adjusted metrics
 
 
 
@@ -48,31 +48,31 @@ Two fact tables are used, sharing conformed dimensions.
 
 
 
-\### 2. `fct\_prescribing\_snomed\_icb`
+### 2. `fct\_prescribing\_snomed\_icb`
 
-\*\*Grain\*\*
+*\*Grain\*\*
 
-\- Financial Year
+- Financial Year
 
-\- ICB
+- ICB
 
-\- BNF Presentation
+- BNF Presentation
 
-\- Supplier
+- Supplier
 
-\- SNOMED Code
+- SNOMED Code
 
-\- Prescribing Context
+- Prescribing Context
 
 
 
-\*\*Purpose\*\*
+*\*Purpose\*\*
 
-\- Prescribing behaviour analysis
+- Prescribing behaviour analysis
 
-\- Brand vs generic variance
+- Brand vs generic variance
 
-\- Supplier and formulation effects
+- Supplier and formulation effects
 
 
 
@@ -84,49 +84,49 @@ SNOMED codes are retained as \*\*degenerate attributes\*\* in the fact table to 
 
 
 
-\## Dimensions
+## Dimensions
 
 
 
-\### `dim\_time`
+### `dim\_time`
 
-\- Financial Year
+- Financial Year
 
-\- Start / End Year attributes
-
-
-
-\### `dim\_geography`
-
-\- ICB Code
-
-\- ICB Name
-
-\- Region
+- Start / End Year attributes
 
 
 
-\### `dim\_bnf`
+### `dim\_geography`
 
-\- Chemical Substance
+- ICB Code
 
-\- BNF Chapter
+- ICB Name
 
-\- BNF Section
-
-\- Hierarchical descriptors
+- Region
 
 
 
-\### `dim\_supplier`
+### `dim\_bnf`
 
-\- Supplier Name
+- Chemical Substance
 
-\- Surrogate Supplier ID
+- BNF Chapter
+
+- BNF Section
+
+- Hierarchical descriptors
 
 
 
-\### `dim\_prescribing\_context`
+### `dim\_supplier`
+
+- Supplier Name
+
+- Surrogate Supplier ID
+
+
+
+### `dim\_prescribing\_context`
 
 Represents \*how\* an item was prescribed in which context
 
@@ -134,11 +134,11 @@ Represents \*how\* an item was prescribed in which context
 
 Attributes include:
 
-\- preparation\_class
+- preparation\_class
 
-\- prescribed\_preparation\_class
+- prescribed\_preparation\_class
 
-\- advanced\_service\_type
+- advanced\_service\_type
 
 
 
@@ -150,21 +150,21 @@ This dimension is generated deterministically using hashed combinations of these
 
 
 
-\## Key Design Decisions
+## Key Design Decisions
 
 
 
-\### Deterministic Surrogate Keys
+### Deterministic Surrogate Keys
 
-\- MD5 hashing used across all dimensions
+- MD5 hashing used across all dimensions
 
-\- Ensures stable joins across rebuilds
+- Ensures stable joins across rebuilds
 
-\- Avoids reliance on volatile natural keys
+- Avoids reliance on volatile natural keys
 
 
 
-\### No Presentation Dimension (Phase 1)
+### No Presentation Dimension (Phase 1)
 
 Presentation attributes required for analysis already exist in the canonical fact table.  
 
@@ -176,17 +176,17 @@ Introducing a separate presentation dimension would increase join complexity wit
 
 
 
-\## Testing \& Integrity
+## Testing \& Integrity
 
 
 
 dbt schema tests enforce:
 
-\- uniqueness of surrogate keys
+- uniqueness of surrogate keys
 
-\- non-null foreign keys
+- non-null foreign keys
 
-\- referential integrity between facts and dimensions
+- referential integrity between facts and dimensions
 
 
 
