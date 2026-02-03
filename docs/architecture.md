@@ -38,49 +38,23 @@ Power BI
 
 
 
-\## Ingestion Layer
+## Ingestion Layer
 
 
 
-\### Source
+### Source
 
-\- NHS Business Services Authority (NHSBSA)
+- NHS Business Services Authority (NHSBSA)
 
-\- Prescribing Cost Analysis ICB Summary Tables (FY 2024/25)
-
-
-
-\### Processing
-
-\- Large Excel files converted to CSV using Python
-
-\- Minimal transformation at this stage to keep it true to the source
+- Prescribing Cost Analysis ICB Summary Tables (FY 2024/25)
 
 
 
----
+### Processing
 
+- Large Excel files converted to CSV using Python
 
-
-\## Storage \& Compute
-
-
-
-\### Amazon S3
-
-\- Raw data lake
-
-\- Immutable source storage
-
-
-
-\### Amazon Redshift Serverless
-
-\- Columnar analytical warehouse
-
-\- Auto-scaling compute
-
-\- Secure COPY ingestion from S3 via IAM roles
+- Minimal transformation at this stage to keep it true to the source
 
 
 
@@ -88,37 +62,25 @@ Power BI
 
 
 
-\## Transformation Layer (dbt)
+## Storage \& Compute
 
 
 
-\### Staging Models
+### Amazon S3
 
-\- Type casting
+- Raw data lake
 
-\- Null standardisation
-
-\- Financial year normalisation
-
-\- Deduplication at source grain
+- Immutable source storage
 
 
 
-\### Intermediate Models
+### Amazon Redshift Serverless
 
-\- Grain alignment
+- Columnar analytical warehouse
 
-\- Key preparation for dimensions
+- Auto-scaling compute
 
-
-
-\### Mart Models
-
-\- Fact and dimension construction
-
-\- Surrogate key assignment
-
-\- Schema and relationship testing
+- Secure COPY ingestion from S3 via IAM roles
 
 
 
@@ -126,17 +88,55 @@ Power BI
 
 
 
-\## Analytics \& Visualisation
+## Transformation Layer (dbt)
 
 
 
-\### Power BI
+### Staging Models
 
-\- KPI dashboard
+- Type casting
 
-\- Savings treemap (BNF chapter / section)
+- Null standardisation
 
-\- High-impact branded product leaderboard
+- Financial year normalisation
+
+- Deduplication at source grain
+
+
+
+### Intermediate Models
+
+- Grain alignment
+
+- Key preparation for dimensions
+
+
+
+### Mart Models
+
+- Fact and dimension construction
+
+- Surrogate key assignment
+
+- Schema and relationship testing
+
+
+
+---
+
+
+
+## Analytics \& Visualisation
+
+
+
+### Power BI
+
+- KPI dashboard
+
+- Savings treemap (BNF chapter / section)
+
+- High-impact branded product leaderboard
 
 
 
@@ -148,15 +148,15 @@ Screenshots are provided in `/docs/Screenshots` to demonstrate analytical valida
 
 
 
-\## Security \& Governance
+## Security \& Governance
 
 
 
-\- IAM roles for Redshift COPY operations
+- IAM roles for Redshift COPY operations
 
-\- No credentials embedded in code
+- No credentials embedded in code
 
-\- dbt artifacts and logs excluded from version control
+- dbt artifacts and logs excluded from version control
 
 
 
@@ -164,19 +164,19 @@ Screenshots are provided in `/docs/Screenshots` to demonstrate analytical valida
 
 
 
-\## Scalability
+## Scalability
 
 
 
 The architecture is designed to support:
 
-\- Multi-year expansion
+- Multi-year expansion
 
-\- Monthly EPD datasets
+- Monthly EPD datasets
 
-\- dm+d enrichment
+- dm+d enrichment
 
-\- Orchestrated ingestion (Phase 2)
+- Orchestrated ingestion (Phase 2)
 
 
 
