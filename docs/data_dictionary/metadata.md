@@ -1,100 +1,34 @@
-# Data Dictionary \& Metadata
-
-
-
-This project utilizes publicly available NHSBSA prescribing datasets. The following metadata is reproduced and structured from official NHSBSA documentation to ensure analytical integrity.
-
-
-
-## 1. Clinical \& BNF Hierarchy
-
-These fields define the "Grain" of the medicinal products being analyzed.
-
-
-
-| Field | Description |
-
-| :--- | :--- |
-
-| \*\*BNF Chapter\*\* | Broadest grouping (e.g., Gastro-Intestinal System). Includes Name and Code. |
-
-| \*\*BNF Section / Paragraph\*\* | Intermediate therapeutical classifications sitting below the Chapter level. |
-
-| \*\*BNF Chemical Substance\*\* | The main active ingredient (e.g., Amoxicillin). Appliances inherit the BNF section. |
-
-| \*\*BNF Presentation\*\* | The specific type, strength, and formulation (e.g., Paracetamol 500mg tablets). |
-
-| \*\*SNOMED Code\*\* | Unique computer-readable identifier (SNOMED CT) for Medicinal Products (VMP/AMP level). |
-
-| \*\*Generic BNF Presentation\*\* | For proprietary drugs, this identifies the generic equivalent BNF code/name. |
-
-| \*\*Preparation Class\*\* | Categorizes products into 5 classes (Generic, Proprietary, Appliance, etc.). Key for efficiency modeling. |
-
-| \*\*Supplier Name\*\* | The manufacturer or wholesaler (e.g., TEVA, AAH Pharmaceuticals). |
-
-| \*\*Unit of Measure\*\* | The smallest available unit (e.g., tablet, ml, gram). |
-
-
-
-## 2. Financial \& Quantitative Measures
-
-The core metrics used to calculate the £252.5M savings opportunity.
-
-
-
-| Field | Description |
-
-| :--- | :--- |
-
-| \*\*Total Cost (GBP)\*\* | Also known as Net Ingredient Cost (NIC). Based on Drug Tariff basic prices. |
-
-| \*\*Total Items\*\* | Number of times a product appears on a prescription form (Paper or Electronic). |
-
-| \*\*Total Quantity\*\* | Total count of units dispensed (Items × Quantity). |
-
-| \*\*Cost Per Item (GBP)\*\* | Calculated as `Total Cost / Total Items`. |
-
-| \*\*Cost Per Quantity (GBP)\*\* | Calculated as `Total Cost / Total Quantity`. |
-
-| \*\*Quantity Per Item\*\* | The average quantity prescribed per single item. |
-
-
-
-## 3. Geography \& Population
-
-The dimensions used to aggregate data at the Integrated Care Board (ICB) level.
-
-
-
-| Field | Description |
-
-| :--- | :--- |
-
-| \*\*ICB Name / Code\*\* | The Integrated Care Board responsible for the prescribing organization. |
-
-| \*\*Region Name / Code\*\* | The broader NHS region based on administrative records. |
-
-| \*\*Population\*\* | ONS mid-year population estimates for the corresponding year. |
-
-| \*\*Items Per 1,000 Pop\*\* | Normalized dispensing rate for cross-regional comparison. |
-
-| \*\*Financial Year\*\* | Data period (1 April to 31 March). |
-
-
-
-## 4. Preparation Class Reference
-
-This is the logic used to identify \*\*Class 3 (Branded)\*\* vs \*\*Class 1 (Generic)\*\* for savings benchmarks:
-
-
-
-\* \*\*Class 1:\*\* Drugs prescribed and available generically.
-
-\* \*\*Class 2:\*\* Prescribed generically but only available as proprietary.
-
-\* \*\*Class 3:\*\* Prescribed and dispensed by proprietary brand name.
-
-\* \*\*Class 4:\*\* Dressings, appliances, and medical devices.
-
-\* \*\*Class 5:\*\* Prescribed generically with a named supplier.
-
+| Field                             | Description                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Advanced Service Type**         | The type of advanced service an item has been issued through.                                                                                                                                                                                                                                                                                                                                                                             |
+| **BNF Chapter Code**              | The unique code used to refer to the British National Formulary (BNF) chapter.                                                                                                                                                                                                                                                                                                                                                            |
+| **BNF Chapter Name**              | The name given to a British National Formulary (BNF) chapter. This is the broadest grouping of the BNF therapeutic classification system.                                                                                                                                                                                                                                                                                                 |
+| **BNF Chemical Substance Code**   | The unique code used to refer to the British National Formulary (BNF) chemical substance.                                                                                                                                                                                                                                                                                                                                                 |
+| **BNF Chemical Substance Name**   | The name of the main active ingredient in a drug. Appliances do not hold a chemical substance, but instead inherit the corresponding BNF section. Determined by the BNF for drugs, or NHSBSA for appliances (e.g. *Amoxicillin*).                                                                                                                                                                                                         |
+| **BNF Paragraph Code**            | The unique code used to refer to the British National Formulary (BNF) paragraph.                                                                                                                                                                                                                                                                                                                                                          |
+| **BNF Paragraph Name**            | The name given to a British National Formulary (BNF) paragraph. This level of grouping sits below BNF section.                                                                                                                                                                                                                                                                                                                            |
+| **BNF Presentation Code**         | The unique code used to refer to the British National Formulary (BNF) presentation.                                                                                                                                                                                                                                                                                                                                                       |
+| **BNF Presentation Name**         | The name given to the specific type, strength, and formulation of a drug or appliance (e.g. *Paracetamol 500mg tablets*).                                                                                                                                                                                                                                                                                                                 |
+| **BNF Section Code**              | The unique code used to refer to the British National Formulary (BNF) section.                                                                                                                                                                                                                                                                                                                                                            |
+| **BNF Section Name**              | The name given to a British National Formulary (BNF) section. This is the next broadest grouping after chapter.                                                                                                                                                                                                                                                                                                                           |
+| **Cost Per Item (GBP)**           | Calculated by dividing **Total Cost (GBP)** by **Total Items**.                                                                                                                                                                                                                                                                                                                                                                           |
+| **Cost Per Quantity (GBP)**       | Calculated by dividing **Total Cost (GBP)** by **Total Quantity**.                                                                                                                                                                                                                                                                                                                                                                        |
+| **Financial Year**                | The financial year to which the data belongs (1 April to 31 March of the following year).                                                                                                                                                                                                                                                                                                                                                 |
+| **Generic BNF Presentation Code** | For proprietary drugs, the generic equivalent BNF presentation code. For generic drugs, this repeats the original BNF code.                                                                                                                                                                                                                                                                                                               |
+| **Generic BNF Presentation Name** | For proprietary drugs, the generic equivalent BNF presentation name. For generic drugs, this repeats the original BNF name.                                                                                                                                                                                                                                                                                                               |
+| **ICB Code**                      | The unique code of the Integrated Care Board (ICB).                                                                                                                                                                                                                                                                                                                                                                                       |
+| **ICB Name**                      | The name of the Integrated Care Board an organisation belongs to. Based on NHSBSA administrative records rather than strict geographic boundaries.                                                                                                                                                                                                                                                                                        |
+| **Items Per 1,000 Population**    | The number of items dispensed per 1,000 people in the relevant population over the time period.                                                                                                                                                                                                                                                                                                                                           |
+| **Population**                    | The population estimate for the corresponding **Population Year**.                                                                                                                                                                                                                                                                                                                                                                        |
+| **Population Year**               | The year in which ONS mid-year population estimates were taken.                                                                                                                                                                                                                                                                                                                                                                           |
+| **Preparation Class**             | Classification maintained by NHSBSA to distinguish product types:<br><br>• **Class 1:** Drugs prescribed and available generically<br>• **Class 2:** Drugs prescribed generically but only available as proprietary products<br>• **Class 3:** Drugs prescribed and dispensed by proprietary brand name<br>• **Class 4:** Dressings, appliances, and medical devices<br>• **Class 5:** Drugs prescribed generically with a named supplier |
+| **Prescribed Preparation Class**  | The preparation class recorded on the prescription form. Used to determine whether an item was prescribed generically.                                                                                                                                                                                                                                                                                                                    |
+| **Quantity Per Item**             | Calculated by dividing **Total Quantity** by **Total Items**.                                                                                                                                                                                                                                                                                                                                                                             |
+| **Region Code**                   | The unique code of the NHS region.                                                                                                                                                                                                                                                                                                                                                                                                        |
+| **Region Name**                   | The name of the NHS region a dispensing organisation belongs to, based on NHSBSA administrative records.                                                                                                                                                                                                                                                                                                                                  |
+| **SNOMED Code**                   | A SNOMED CT (Systematized Nomenclature of Medicine – Clinical Terms) identifier. Uniquely identifies a medicinal product (VMP or AMP level) and is never reused.                                                                                                                                                                                                                                                                          |
+| **Supplier Name**                 | The name of the manufacturer or wholesaler of a product (e.g. *TEVA*, *AAH Pharmaceuticals*).                                                                                                                                                                                                                                                                                                                                             |
+| **Total Cost (GBP)**              | The Net Ingredient Cost (NIC): the amount payable using the basic price of the drug or appliance and the quantity prescribed, as defined by the Drug Tariff or supplier pricing.                                                                                                                                                                                                                                                          |
+| **Total Items**                   | The number of prescription items dispensed. Each appearance of a product on a prescription form counts as one item.                                                                                                                                                                                                                                                                                                                       |
+| **Total Quantity**                | The total quantity prescribed. Calculated as **Quantity × Items** (e.g. 2 items × 28 tablets = 56).                                                                                                                                                                                                                                                                                                                                       |
+| **Unit of Measure**               | The smallest unit of measure for a product (e.g. tablet, capsule, vial, gram, millilitre).                                                                                                                                                                                                                                                                                                                                                |
