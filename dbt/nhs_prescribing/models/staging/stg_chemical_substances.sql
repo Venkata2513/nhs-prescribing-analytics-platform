@@ -1,6 +1,7 @@
 with src as (
 
     select
+        -- keys / descriptors
         nullif(trim(financial_year), '')                         as financial_year_raw,
         nullif(trim(region_name), '')                            as region_name,
         nullif(trim(region_code), '')                            as region_code,

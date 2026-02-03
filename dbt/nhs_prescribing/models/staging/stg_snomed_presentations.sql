@@ -30,7 +30,6 @@ with src as (
 
         nullif(trim(advanced_service_type), '')                  as advanced_service_type,
 
-        -- if these are already numeric in raw, try_cast is harmless
         try_cast(preparation_class as integer)                   as preparation_class,
         try_cast(prescribed_preparation_class as integer)        as prescribed_preparation_class,
 

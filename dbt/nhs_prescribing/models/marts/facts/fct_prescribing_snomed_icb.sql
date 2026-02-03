@@ -1,10 +1,8 @@
 with base as (
 
     select
-        -- normalise FY once
         nullif(trim(financial_year), '') as financial_year_clean,
 
-        -- other fields
         icb_code,
         bnf_presentation_code,
         snomed_code,

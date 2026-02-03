@@ -7,7 +7,7 @@ A cloud-based analytical platform identifying **£252.5M in annual prescribing e
 ---
 
 ## Overview
-NHS prescribing expenditure exceeds **£11B annually**, yet clinically equivalent and lower-cost generic alternatives are not consistently prescribed. 
+NHS prescribing expenditure exceeds **£11B annually**, yet clinically equivalent and lower-cost generic alternatives are not consistently prescribed. While national cost summaries exist but those reports are pre-defined, static and do not allow custom analysis to gain more granular insights.
 
 This project transforms large, fragmented NHS prescribing datasets into a **governed analytical warehouse** to:
 - Quantify prescribing costs

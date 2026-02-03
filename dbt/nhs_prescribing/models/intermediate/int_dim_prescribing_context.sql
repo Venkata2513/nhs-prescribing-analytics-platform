@@ -29,7 +29,7 @@ standardised as (
 final as (
 
     select
-        -- Deterministic key: same inputs always produce same id
+        -- Deterministic key
         md5(
             coalesce(cast(preparation_class as varchar), '∅') || '|' ||
             coalesce(cast(prescribed_preparation_class as varchar), '∅') || '|' ||
