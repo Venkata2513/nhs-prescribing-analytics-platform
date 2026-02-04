@@ -1,3 +1,10 @@
+## Data Dictionary
+
+This project uses publicly available NHSBSA prescribing datasets.
+The following metadata is reproduced  from official documentation
+to preserve data accuracy.
+
+
 | Field                             | Description                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Advanced Service Type**         | The type of advanced service an item has been issued through.                                                                                                                                                                                                                                                                                                                                                                             |
