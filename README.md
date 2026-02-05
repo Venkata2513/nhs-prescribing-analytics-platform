@@ -14,7 +14,7 @@ This project transforms large, fragmented NHS prescribing datasets into a **gove
 - Identify unwarranted variation
 - Estimate evidence-based generic switching opportunities
 
-Built by a **GPhC-registered Pharmacist**, the platform combines clinical domain expertise with modern analytics engineering to ensure insights are **clinically valid, reproducible, and policy-relevant**.
+Built by a **GPhC registered Pharmacist**, the platform combines clinical domain expertise with modern analytics engineering to ensure insights are **clinically valid, reproducible, and policy-relevant**.
 
 ---
 
@@ -29,7 +29,7 @@ Savings are concentrated primarily within the **BNF Central Nervous System (CNS)
 ---
 
 ## Validation
-Aggregated outputs reconcile with [NHSBSA Prescribing Cost Analysis (PCA)](https://www.nhsbsa.nhs.uk/statistical-collections/prescription-cost-analysis-england/prescription-cost-analysis-england-202425) national summaries, providing external validation of data ingestion, transformation logic, and analytical modelling.
+Aggregated outputs align with [NHSBSA Prescribing Cost Analysis (PCA)](https://www.nhsbsa.nhs.uk/statistical-collections/prescription-cost-analysis-england/prescription-cost-analysis-england-202425) national summaries, providing external validation of data ingestion, transformation logic, and analytical modelling.
 
 ---
 
@@ -58,7 +58,7 @@ The central challenge of NHS prescribing data is **grain alignment**. This platf
 | **Presentation** | Operational and supply-chain analysis |
 | **SNOMED** | Clinical concept, specificity, formulation |
 
-SNOMED is retained as a **degenerate attribute** within the fact table to preserve clinical accuracy without unnecessary dimensional explosion.
+Due to lack of VMP/AMP mapping in the raw dataset and to avoid unnecessary dimensional explosion SNOMED is  retained as a **degenerate attribute** within the fact table to preserve clinical accuracy. This will be core area of analysis for Phase 2 of this project. 
 
 ---
 
@@ -69,15 +69,17 @@ Savings are estimated using a **Price-Per-Unit (PPU) variance model**:
 ### Generic Benchmarks
 Benchmarks are calculated **like-for-like** across the same chemical substance, unit of measure, and time period. This ensures clinically appropriate comparisons.
 
+Estimated savings should be interpreted as **economic opportunity** where prescribing variance exists rathern than a switch list. This analysis acknowledges operational realities such as clinical suitability, strength, formulation and supplier volatility always guide prescribing decisions. 
+
 ---
 
 ## Engineering Challenges Addressed
-*   **Ingestion Diagnostics:** Used `sys_load_error_detail` in Redshift to resolve COPY failures caused by verbose free-text NHS fields.
+*   **Ingestion Diagnostics:** Used `sys_load_error_detail` in Redshift to resolve COPY failures caused by long free-text NHS fields.
 *   **Surrogate Key Generation:** Implemented **MD5-based surrogate keys** in dbt to guarantee stable joins across:<br>
     ~63k chemical substance rows<br>
     ~600k presentation rows<br>
     ~770k SNOMED-level rows<br>
-    42 ICBs  
+      42 ICBs  
 *   **Identity & Access Management:** Configured IAM roles for secure, credential-free S3 ingestion into Redshift.
 
 ---
