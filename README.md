@@ -62,7 +62,7 @@ The central challenge of NHS prescribing data is **grain alignment**. This platf
 | **Presentation** | Operational and supply-chain analysis |
 | **SNOMED** | Clinical concept, specificity, formulation |
 
-Due to lack of VMP/AMP mapping in the raw dataset and to avoid unnecessary dimensional explosion SNOMED is  retained as a **degenerate attribute** within the fact table to preserve clinical accuracy. This will be core area of analysis for Phase 2 of this project. 
+Due to absence of clear VMP/AMP mappings in the raw dataset - and to avoid unnecessary dimensional explosion - SNOMED is  retained as a **degenerate attribute** within the fact table in Phase 1.This is to preserve clinical specificity while maintaining a scalable model. SNOMED enrichment will be core Phase 2 enhancement of this project to give actionable prescribing insights. 
 
 ---
 

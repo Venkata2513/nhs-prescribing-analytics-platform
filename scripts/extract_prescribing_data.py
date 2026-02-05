@@ -8,7 +8,7 @@ print("Available sheets:")
 for sheet in xls.sheet_names:
     print("-", sheet)
 
-# Export the first sheet for now
+# Export the SNOMED sheet
 sheet_to_export = "SNOMED_Codes"
 
 df = pd.read_excel(excel_file, sheet_name=sheet_to_export)

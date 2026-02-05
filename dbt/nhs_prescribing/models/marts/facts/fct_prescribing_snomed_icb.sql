@@ -35,7 +35,8 @@ with base as (
 final as (
 
     select
-        -- FKs derived from cleaned fields
+        -- Surrogate keys derived from cleaned fields
+
         md5(financial_year_clean) as time_id,
         md5(icb_code)            as geography_id,
         md5(bnf_chemical_substance_code) as bnf_id,

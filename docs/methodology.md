@@ -5,7 +5,7 @@
 
 
 
-NHS prescribing datasets are large, fragmented, and published at multiple clinical and operational grains. While national cost summaries exist, they do not explain **where** prescribing inefficiencies arise or **how** they can be addressed safely, Also they have a **visibility ceiling** meaning those reports are pre-defined and do not allow ad-hoc analysis to gain more granular insights. 
+NHS prescribing datasets are large, fragmented, and published at multiple clinical and operational grains. While national cost summaries exist, they do not explain **where** prescribing inefficiencies arise or **how** they can be addressed safely, Also they have a **visibility ceiling**, meaning those reports are pre-defined and do not allow ad-hoc analysis to gain more granular insights. 
 
 
 
@@ -90,11 +90,13 @@ Generic benchmarks are computed:
 
 - using the same unit of measure
 
+- on a weighted average price benchamrk
+
 
 
 This ensures comparisons are:
 
-- clinically valid
+- clinically valid, policy relevant
 
 - operationally realistic
 
@@ -113,6 +115,8 @@ This ensures comparisons are:
 - Savings represent **opportunity**, not guaranteed cash release
 
 - Some branded products do not have directly substitutable generic AMPs
+
+-Only 39% of observable brands have true-to-true generic AMPs, this was due to absense of explicit VMP/AMP mapping in the raw dataset and masking a significant propotion of brands being under reported or ignored.  
 
 - SNOMED → dm+d (VMP/AMP) mapping is required for prescriber-level switch lists
 

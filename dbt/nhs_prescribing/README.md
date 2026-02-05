@@ -1,8 +1,12 @@
 \# dbt Models – NHS Prescribing Analytics
 
+--
+
 
 
 This directory contains the dbt transformation layer for the \*\*NHS Prescribing Cost \& Efficiency Platform\*\*.
+
+
 
 
 
@@ -18,13 +22,13 @@ It is responsible for:
 
 
 
+
+
 The project follows a layered dbt structure:
 
-\- \*\*staging\*\* – type casting, normalization, de-duplication  
+\- \*\*staging\*\* – type casting, normalization, de-duplication
 
-\- \*\*intermediate\*\* – grain alignment and reusable logic  
+\- \*\*intermediate\*\* – grain alignment and reusable logic
 
 \- \*\*marts\*\* – star/galaxy schema with validated facts and dimensions
-
-
 

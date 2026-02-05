@@ -1,8 +1,8 @@
-\# Architecture
+# Architecture
 
 
 
-\## High-Level Design
+## High-Level Design
 
 
 
@@ -10,7 +10,7 @@ This project implements a modern, cloud-native analytical pipeline using AWS and
 
 
 
-NHSBSA Excel Files
+NHSBSA Excel Files (ICB Summaries)
 
 ↓
 
@@ -22,7 +22,7 @@ Amazon S3 (Raw Zone)
 
 ↓
 
-Amazon Redshift Serverless
+Amazon Redshift Serverless (Analytical Warehouse)
 
 ↓
 
@@ -31,6 +31,11 @@ dbt (Staging → Marts)
 ↓
 
 Power BI
+
+
+![System Architecture](https://github.com/Venkata2513/nhs-prescribing-analytics-platform/blob/main/docs/diagrams/NHS%20Prescribing%20Data%20Platform%20Architecture.png)
+
+Fig 1: End-to-End Data Pipeline Architecture. (Galaxy Schema implemented within the dbt transformation layer to support multi-grain analysis)
 
 
 
