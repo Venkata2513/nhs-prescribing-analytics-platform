@@ -5,11 +5,11 @@
 
 
 
-NHS prescribing datasets are large, fragmented, and published at multiple clinical and operational grains. While national cost summaries exist, they do not explain \*where\* prescribing inefficiencies arise or \*how\* they can be addressed safely, Also they have a \*visibility ceiling\* meaning those reports are pre-defined and do not allow ad-hoc analysis to gain more granular insights. 
+NHS prescribing datasets are large, fragmented, and published at multiple clinical and operational grains. While national cost summaries exist, they do not explain **where** prescribing inefficiencies arise or **how** they can be addressed safely, Also they have a **visibility ceiling** meaning those reports are pre-defined and do not allow ad-hoc analysis to gain more granular insights. 
 
 
 
-This project aims to quantify \*\*evidence-based prescribing efficiency opportunities\*\* by comparing branded and generic prescribing on a like-for-like basis, without double-counting spend or violating clinical substitution rules. Also allows you perform granular, ad-hoc deep-dives into specific ICBs, branded volumes, and therapeutic cost drivers. 
+This project aims to quantify **evidence-based prescribing efficiency opportunities** by comparing branded and generic prescribing on a like-for-like basis, without double-counting spend or violating clinical substitution rules. Also allows you perform granular, ad-hoc deep-dives into specific ICBs, branded volumes, and therapeutic cost drivers. 
 
 
 
@@ -70,7 +70,7 @@ This directly informed the multi-fact Galaxy schema used in the warehouse.
 
 
 
-Savings are estimated using a \*\*Price Per Item (PPI) variance model\*\*:
+Savings are estimated using a **Price Per Item (PPI) variance model:**
 
 
 
@@ -110,7 +110,7 @@ This ensures comparisons are:
 
 
 
-- Savings represent \*\*opportunity\*\*, not guaranteed cash release
+- Savings represent **opportunity**, not guaranteed cash release
 
 - Some branded products do not have directly substitutable generic AMPs
 
@@ -130,7 +130,7 @@ These limitations are explicitly acknowledged and addressed in the Phase 2 roadm
 
 
 
-Aggregated outputs reconcile with:
+Aggregated outputs align with:
 
 - NHSBSA Prescribing Cost Analysis (PCA) national summaries
 
