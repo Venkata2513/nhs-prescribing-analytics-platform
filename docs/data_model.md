@@ -6,7 +6,7 @@
 
 
 
-The warehouse is modelled using a \*\*Galaxy (Constellation) Schema\*\* to support multiple analytical grains without double-counting or loss of clinical detail.
+The warehouse is modelled using a **Galaxy (Constellation) Schema** to support multiple analytical grains without double-counting or loss of clinical detail.
 
 
 
@@ -24,7 +24,7 @@ Two fact tables are used, sharing conformed dimensions.
 
 ### 1. `fct\_prescribing\_chemical\_icb`
 
-\*\*Grain\*\*
+**Grain**
 
 - Financial Year
 
@@ -34,7 +34,7 @@ Two fact tables are used, sharing conformed dimensions.
 
 
 
-\*\*Purpose\*\*
+**Purpose**
 
 - National and regional cost trends
 
@@ -50,7 +50,7 @@ Two fact tables are used, sharing conformed dimensions.
 
 ### 2. `fct\_prescribing\_snomed\_icb`
 
-\*\*Grain\*\*
+**Grain**
 
 - Financial Year
 
@@ -66,7 +66,7 @@ Two fact tables are used, sharing conformed dimensions.
 
 
 
-\*\*Purpose\*\*
+**Purpose**
 
 - Prescribing behaviour analysis
 
@@ -76,7 +76,7 @@ Two fact tables are used, sharing conformed dimensions.
 
 
 
-SNOMED codes are retained as \*\*degenerate attributes\*\* in the fact table to avoid dimensional explosion while preserving clinical accuracy.
+SNOMED codes are retained as **degenerate attributes** in the fact table to avoid dimensional explosion while preserving clinical accuracy.
 
 
 
@@ -128,7 +128,7 @@ SNOMED codes are retained as \*\*degenerate attributes\*\* in the fact table to 
 
 ### `dim\_prescribing\_context`
 
-Represents \*how\* an item was prescribed in which context
+Represents **how** an item was prescribed in which context
 
 
 

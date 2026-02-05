@@ -22,12 +22,10 @@ generic_benchmark as (
     f.financial_year,
     f.bnf_id,
     f.unit_of_measure,
-    -- choose benchmark method:
-    -- 1) weighted avg cost-per-item (stable)
-    case when sum(f.total_items) > 0 then sum(f.total_cost_gbp) / sum(f.total_items) end as generic_cpi_wavg,
 
-    -- 2) min observed cost-per-item (aggressive, “best case”)
-    min(f.cost_per_item_gbp) as generic_cpi_min
+     --  weighted avg cost-per-item (stable)
+    case when sum(f.total_items) > 0 then sum(f.total_cost_gbp) / sum(f.total_items) end as generic_cpi_wavg
+
   from analytics.fct_prescribing_snomed_icb f
   join analytics.dim_prescribing_context c
     on f.prescribing_context_id = c.prescribing_context_id
