@@ -1,34 +1,56 @@
 \# dbt Models – NHS Prescribing Analytics
 
---
+
+
+---
 
 
 
-This directory contains the dbt transformation layer for the \*\*NHS Prescribing Cost \& Efficiency Platform\*\*.
-
-
+This directory contains the \*\*dbt transformation layer\*\* for the \*\*NHS Prescribing Cost \& Efficiency Platform\*\*.
 
 
 
 It is responsible for:
 
-\- cleaning and standardising raw NHS prescribing datasets,
-
-\- modelling multi-grain fact and dimension tables (chemical, presentation, SNOMED),
-
-\- enforcing referential integrity via schema and relationship tests, and
-
-\- producing analytics-ready tables for downstream reporting in Power BI.
 
 
+\- Cleaning and standardising raw NHS prescribing datasets  
+
+\- Modelling multi-grain fact and dimension tables (\*\*chemical, presentation, SNOMED\*\*)  
+
+\- Enforcing referential integrity via \*\*schema and relationship tests\*\*  
+
+\- Producing analytics-ready tables for reporting in \*\*Power BI\*\*
+
+
+
+---
+
+
+
+\## Project Structure
 
 
 
 The project follows a layered dbt structure:
 
-\- \*\*staging\*\* – type casting, normalization, de-duplication
 
-\- \*\*intermediate\*\* – grain alignment and reusable logic
 
-\- \*\*marts\*\* – star/galaxy schema with validated facts and dimensions
+\- \*\*staging\*\*  
+
+&nbsp; Type casting, normalisation, and de-duplication of raw source data
+
+
+
+\- \*\*intermediate\*\*  
+
+&nbsp; Grain alignment, surrogate key generation, and reusable transformation logic
+
+
+
+\- \*\*marts\*\*  
+
+&nbsp; Validated fact and dimension tables organised in a \*\*star / galaxy schema\*\*
+
+
 
