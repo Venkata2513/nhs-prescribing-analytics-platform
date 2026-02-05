@@ -35,6 +35,10 @@ Aggregated outputs align with [NHSBSA Prescribing Cost Analysis (PCA)](https://w
 
 ## Architecture & Tech Stack
 
+![System Architecture](https://github.com/Venkata2513/nhs-prescribing-analytics-platform/blob/main/docs/diagrams/NHS%20Prescribing%20Data%20Platform%20Architecture.png)
+
+Fig 1: End-to-End Data Pipeline Architecture. (Galaxy Schema implemented within the dbt transformation layer to support multi-grain analysis)
+
 ### Cloud & Data
 *   **AWS:** Amazon S3 (raw data lake), Redshift Serverless (analytical warehouse)
 *   **Security:** IAM (secure, role-based access)
