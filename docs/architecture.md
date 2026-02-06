@@ -33,7 +33,7 @@ dbt (Staging → Marts)
 Power BI
 
 
-![System Architecture](https://github.com/Venkata2513/nhs-prescribing-analytics-platform/blob/main/docs/diagrams/NHS%20Prescribing%20Data%20Platform%20Architecture.png)
+![System Architecture](https://github.com/Venkata2513/nhs-prescribing-analytics-platform/blob/main/docs/diagrams/NHS%20Prescribing%20Data%20Platform.png)
 
 Fig 1: End-to-End Data Pipeline Architecture. (Galaxy Schema implemented within the dbt transformation layer to support multi-grain analysis)
 
