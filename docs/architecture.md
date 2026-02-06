@@ -87,6 +87,8 @@ Fig 1: End-to-End Data Pipeline Architecture. (Galaxy Schema implemented within 
 
 - Secure COPY ingestion from S3 via IAM roles
 
+- Schemas  raw / staging / analytics
+
 
 
 ---

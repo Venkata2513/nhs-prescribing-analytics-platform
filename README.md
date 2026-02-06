@@ -16,6 +16,8 @@ This project transforms large, fragmented NHS prescribing datasets into a **gove
 
 Built by a **GPhC registered Pharmacist**, the platform combines clinical domain expertise with modern analytics engineering to ensure insights are **clinically valid, reproducible, and policy-relevant**.
 
+**Scope:** This project uses annual prescription cost analysis ICB-level summary dataset for FY 2024/25, not full monthly English Prescribing Datasets (EPD) which are out of the scope of this project. 
+
 ---
 
 ## Key Findings (FY 2024/25)
@@ -49,7 +51,7 @@ Fig 1: End-to-End Data Pipeline Architecture. (Galaxy Schema implemented within 
 *   **Schema:** **Galaxy (Constellation) Schema** to support multiple analytical grains
 
 ### Visualisation
-*   **Power BI:** KPI dashboards, Savings treemaps, and Brand-level variance analysis
+*   **Power BI:** KPI dashboards, Savings tree maps, and Brand-level variance analysis
 
 ---
 
@@ -73,7 +75,7 @@ Savings are estimated using a **Price-Per-Unit (PPU) variance model**:
 ### Generic Benchmarks
 Benchmarks are calculated **like-for-like** across the same chemical substance, unit of measure, and time period. This ensures clinically appropriate comparisons.
 
-Estimated savings should be interpreted as **economic opportunity** where prescribing variance exists rathern than a switch list. This analysis acknowledges operational realities such as clinical suitability, strength, formulation and supplier volatility always guide prescribing decisions. 
+Estimated savings should be interpreted as **economic opportunity** where prescribing variance exists rather than a switch list. This analysis acknowledges operational realities such as clinical suitability, strength, formulation and supplier volatility always guide prescribing decisions. 
 
 ---
 
