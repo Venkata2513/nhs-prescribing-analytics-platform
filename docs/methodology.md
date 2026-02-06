@@ -116,7 +116,7 @@ This ensures comparisons are:
 
 - Some branded products do not have directly substitutable generic AMPs
 
--Only 39% of brands have observable true-to-true generic AMPs and the rest are not explicitly identifiable without dm+d mapping.
+- Only 39% of brands have observable true-to-true generic AMPs and the rest are not explicitly identifiable without dm+d mapping.
 
 - SNOMED → dm+d (VMP/AMP) mapping is required for definitive prescriber-level switch lists
 
