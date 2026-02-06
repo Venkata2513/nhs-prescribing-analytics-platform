@@ -153,6 +153,8 @@ This dimension is generated deterministically using hashed combinations of these
 ## Key Design Decisions
 
 
+### Galaxy schema chosen over separate star schemas for efficiency and scalability
+
 
 ### Deterministic Surrogate Keys
 

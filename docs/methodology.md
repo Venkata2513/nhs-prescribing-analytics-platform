@@ -58,7 +58,8 @@ Early exploratory profiling confirmed that collapsing these grains into a single
 
 
 
-This directly informed the multi-fact Galaxy schema used in the warehouse.
+This directly informed the multi-fact Galaxy schema used in the warehouse for efficiency and scalability.
+
 
 
 
