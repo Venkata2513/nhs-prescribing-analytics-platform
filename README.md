@@ -16,7 +16,7 @@ This project transforms large, fragmented NHS prescribing datasets into a **gove
 
 Built by a **GPhC registered Pharmacist**, the platform combines clinical domain expertise with modern analytics engineering to ensure insights are **clinically valid, reproducible, and policy-relevant**.
 
-**Scope:** This project uses annual prescription cost analysis ICB-level summary dataset for FY 2024/25, not full monthly English Prescribing Datasets (EPD) which are out of the scope of this project. 
+**Data Rationale:** This project uses prescription cost analysis (PCA) ICB-level summary dataset for FY 2024/25. For high-level strategic analysis, the ICB-level summary dataset presents as an ideal candidate. While the monthly English Prescribing Dataset (EPD) offers granular transaction-level detail, the summary dataset allows for **clearer broader benchmarks and variance analysis** without the unnecessary noise inherent in monthly EPD data.
 
 ---
 
@@ -46,6 +46,7 @@ Fig 1: End-to-End Data Pipeline Architecture. (Galaxy Schema implemented within 
 *   **Security:** IAM (secure, role-based access)
 
 ### Transformation & Modelling
+*   **Python:** Pandas (data preparation, file conversion, ingestion support)
 *   **dbt Core:** Staging, intermediate, and marts layers
 *   **Testing:** Schema and relationship testing for referential integrity
 *   **Schema:** **Galaxy (Constellation) Schema** to support multiple analytical grains
@@ -64,7 +65,19 @@ The central challenge of NHS prescribing data is **grain alignment**. This platf
 | **Presentation** | Operational and supply-chain analysis |
 | **SNOMED** | Clinical concept, specificity, formulation |
 
-Due to absence of clear VMP/AMP mappings in the raw dataset - and to avoid unnecessary dimensional explosion - SNOMED is  retained as a **degenerate attribute** within the fact table in Phase 1.This is to preserve clinical specificity while maintaining a scalable model. SNOMED enrichment will be core Phase 2 enhancement of this project to give actionable prescribing insights. 
+**Galaxy Schema** (also known as a constellation schema) has been chosen over separate star schemas to avoid:
+
+* Duplication of several dimension tables
+
+* More maintenance overhead
+
+* Less efficiency for combined or comparative analysis (e.g. brand vs generic across both tables)
+
+Two fact tables with conformed dimension tables, enable flexible, scalable, and joined analysis from both grain levels.
+
+Due to absence of clear VMP/AMP mappings in the raw dataset - and to avoid unnecessary dimensional explosion - SNOMED is  retained as a **degenerate attribute** within the fact table in Phase 1. This is to preserve clinical specificity while maintaining a scalable model. SNOMED enrichment will be core Phase 2 enhancement of this project to give actionable prescribing insights. 
+
+
 
 ---
 
