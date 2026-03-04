@@ -46,23 +46,6 @@ Aggregated outputs align with [NHSBSA Prescribing Cost Analysis (PCA)](https://w
 
 Fig 1: End-to-End Data Pipeline Architecture. (Galaxy Schema implemented within the dbt transformation layer to support multi-grain analysis)
 
-## Data Pipeline Flow
-
-1. NHS PCA dataset prepared and validated using **Python (Pandas)**
-2. Raw data stored in **Amazon S3**
-3. Data loaded into **Redshift Serverless warehouse**
-4. **dbt transformations** build structured analytical models
-5. Curated marts consumed by **Power BI dashboards**
-
-## Quick Technical Highlights
-
-- Multi-grain analytics across **Chemical, Presentation and SNOMED levels**
-- **Galaxy schema** architecture preventing join multiplication
-- **MD5 surrogate keys** ensuring deterministic joins across datasets
-- **dbt tests** enforcing referential integrity and data quality
-- Modular **dbt transformation layers** enabling scalable analytics models
-- Cloud architecture built on **AWS S3 and Redshift Serverless**
-
 ### Cloud & Data
 *   **AWS:** Amazon S3 (raw data lake), Redshift Serverless (analytical warehouse)
 *   **Security:** IAM (secure, role-based access)
@@ -75,6 +58,27 @@ Fig 1: End-to-End Data Pipeline Architecture. (Galaxy Schema implemented within 
 
 ### Visualisation
 *   **Power BI:** KPI dashboards, Savings tree maps, and Brand-level variance analysis
+
+---
+
+## Quick Technical Highlights
+
+- Multi-grain analytics across **Chemical, Presentation and SNOMED levels**
+- **Galaxy schema** architecture preventing join multiplication
+- **MD5 surrogate keys** ensuring deterministic joins across datasets
+- **dbt tests** enforcing referential integrity and data quality
+- Modular **dbt transformation layers** enabling scalable analytics models
+- Cloud architecture built on **AWS S3 and Redshift Serverless**
+
+---
+
+## Data Pipeline Flow
+
+1. NHS PCA dataset prepared and validated using **Python (Pandas)**
+2. Raw data stored in **Amazon S3**
+3. Data loaded into **Redshift Serverless warehouse**
+4. **dbt transformations** build structured analytical models
+5. Curated marts consumed by **Power BI dashboards**
 
 ---
 
@@ -123,6 +127,8 @@ Estimated savings should be interpreted as **economic opportunity** where prescr
       42 ICBs  
 *   **Identity & Access Management:** Configured IAM roles for secure, credential-free S3 ingestion into Redshift.
 
+---
+
 ## Data Quality & Testing
 
 Data quality is enforced using dbt tests and warehouse constraints.
@@ -134,7 +140,6 @@ Key checks implemented:
 - **Non-null constraints on critical fields**
 - Validation against NHSBSA published aggregates
 
-
 These checks ensure analytical outputs remain reliable and reproducible.
 
 ---
@@ -144,14 +149,27 @@ These checks ensure analytical outputs remain reliable and reproducible.
 Detailed technical documentation is available in the `/docs` directory.
 
 - **System Architecture**  
-  → docs/architecture.md
+  → [docs/architecture.md](docs/architecture.md)
 
 - **Data Model Design**  
-  → docs/data_model.md
+  → [docs/data_model.md](docs/data_model.md)
 
 - **Savings Methodology**  
-  → docs/methodology.md
+  → [docs/methodology.md](docs/methodology.md)
 
+---
+
+## Example Dashboard Output
+
+### Headline KPIs
+
+![Headline KPIs](docs/screenshots/Headline%20KPIs.png)
+
+### Estimated Savings by BNF Chapter
+
+![Savings](docs/screenshots/Estimated%20Savings%20by%20BNF%20Chapter%26Brand.png)
+
+---
 
 ## Future Enhancements (Phase 2)
 *   **dm+d enrichment:** Explicit SNOMED → VMP / AMP mapping for actionable switching lists.
