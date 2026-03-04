@@ -1,6 +1,11 @@
-# NHS Prescribing Cost & Efficiency Platform
+# NHS Prescribing Analytics Platform
 
 **AWS Redshift · dbt · PowerBI**
+
+![AWS](https://img.shields.io/badge/AWS-Redshift-orange)
+![dbt](https://img.shields.io/badge/dbt-analytics--engineering-orange)
+![PowerBI](https://img.shields.io/badge/PowerBI-visualisation-yellow)
+![Python](https://img.shields.io/badge/Python-data--ingestion-blue)
 
 A cloud-based analytical platform identifying **£252.5M in annual prescribing efficiency opportunities**, while providing deep insights into prescribing patterns and cost drivers across England’s **42 Integrated Care Boards (ICBs)**.
 
@@ -41,6 +46,23 @@ Aggregated outputs align with [NHSBSA Prescribing Cost Analysis (PCA)](https://w
 
 Fig 1: End-to-End Data Pipeline Architecture. (Galaxy Schema implemented within the dbt transformation layer to support multi-grain analysis)
 
+## Data Pipeline Flow
+
+1. NHS PCA dataset prepared and validated using **Python (Pandas)**
+2. Raw data stored in **Amazon S3**
+3. Data loaded into **Redshift Serverless warehouse**
+4. **dbt transformations** build structured analytical models
+5. Curated marts consumed by **Power BI dashboards**
+
+## Quick Technical Highlights
+
+- Multi-grain analytics across **Chemical, Presentation and SNOMED levels**
+- **Galaxy schema** architecture preventing join multiplication
+- **MD5 surrogate keys** ensuring deterministic joins across datasets
+- **dbt tests** enforcing referential integrity and data quality
+- Modular **dbt transformation layers** enabling scalable analytics models
+- Cloud architecture built on **AWS S3 and Redshift Serverless**
+
 ### Cloud & Data
 *   **AWS:** Amazon S3 (raw data lake), Redshift Serverless (analytical warehouse)
 *   **Security:** IAM (secure, role-based access)
@@ -57,6 +79,7 @@ Fig 1: End-to-End Data Pipeline Architecture. (Galaxy Schema implemented within 
 ---
 
 ## Data Modelling: A Pharmacist–Engineer Perspective
+
 The central challenge of NHS prescribing data is **grain alignment**. This platform reconciles three clinically distinct grains:
 
 | Grain | Purpose |
@@ -76,7 +99,6 @@ The central challenge of NHS prescribing data is **grain alignment**. This platf
 Two fact tables with conformed dimension tables, enable flexible, scalable, and joined analysis from both grain levels.
 
 Due to absence of clear VMP/AMP mappings in the raw dataset - and to avoid unnecessary dimensional explosion - SNOMED is  retained as a **degenerate attribute** within the fact table in Phase 1. This is to preserve clinical specificity while maintaining a scalable model. SNOMED enrichment will be core Phase 2 enhancement of this project to give actionable prescribing insights. 
-
 
 
 ---
@@ -101,7 +123,33 @@ Estimated savings should be interpreted as **economic opportunity** where prescr
       42 ICBs  
 *   **Identity & Access Management:** Configured IAM roles for secure, credential-free S3 ingestion into Redshift.
 
+## Data Quality & Testing
+
+Data quality is enforced using dbt tests and warehouse constraints.
+
+Key checks implemented:
+
+- **Primary key uniqueness tests**
+- **Relationship tests enforcing referential integrity**
+- **Non-null constraints on critical fields**
+- Validation against NHSBSA published aggregates
+
+These checks ensure analytical outputs remain reliable and reproducible.
 ---
+
+## Technical Documentation
+
+Detailed technical documentation is available in the `/docs` directory.
+
+- **System Architecture**  
+  → docs/architecture.md
+
+- **Data Model Design**  
+  → docs/data_model.md
+
+- **Savings Methodology**  
+  → docs/methodology.md
+
 
 ## Future Enhancements (Phase 2)
 *   **dm+d enrichment:** Explicit SNOMED → VMP / AMP mapping for actionable switching lists.
